@@ -14,4 +14,9 @@ func (h *TemperatureHistoryHistory) Count() int {
 	return len(h.values)
 }
 
-func ExportTemperatureHistory(history *TemperatureHistoryHistory) []int { return history.Values() }
+func ExportTemperatureHistory(history *TemperatureHistoryHistory) []int {
+	values := history.Values()
+	out := make([]int, len(values))
+	copy(out, values)
+	return out
+}

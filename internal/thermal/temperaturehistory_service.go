@@ -15,5 +15,7 @@ func (h *TemperatureHistoryHistory) Add(value int) {
 func (h *TemperatureHistoryHistory) Values() []int {
 	h.mu.RLock()
 	defer h.mu.RUnlock()
-	return h.values
+	out := make([]int, len(h.values))
+	copy(out, h.values)
+	return out
 }
